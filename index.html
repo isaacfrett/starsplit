@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Starsplit — a cosmic match-3</title>
+<meta name="description" content="A cosmic match-3 for iPhone and iPad, built around one move: tap the star, and choose the shape it breaks into.">
+<meta name="theme-color" content="#0b0d1e">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="page">
+
+	<header class="masthead">
+		<a class="wordmark" href="index.html">Star<span>split</span></a>
+		<nav class="nav">
+			<a href="index.html" aria-current="page">The game</a>
+			<a href="support.html">Support</a>
+			<a href="privacy.html">Privacy</a>
+		</nav>
+	</header>
+
+	<main>
+		<section class="hero">
+			<p class="eyebrow">iPhone &amp; iPad</p>
+			<h1>One star. Four ways to break it.</h1>
+			<p class="lede">
+				A cosmic match-3 built around a single move. Every level hands you one star.
+				Tap it — don't swap it — and you choose the shape it breaks into.
+			</p>
+		</section>
+
+		<ul class="splits" id="splits">
+			<li class="split">
+				<div class="grid" data-shape="cross" role="img" aria-label="Cross: clears one full row and one full column."></div>
+				<h2>Cross</h2>
+				<p>Reach</p>
+			</li>
+			<li class="split">
+				<div class="grid" data-shape="rows" role="img" aria-label="Rows: clears three whole rows."></div>
+				<h2>Rows</h2>
+				<p>Sweep</p>
+			</li>
+			<li class="split">
+				<div class="grid" data-shape="cols" role="img" aria-label="Columns: clears three whole columns."></div>
+				<h2>Columns</h2>
+				<p>A lane</p>
+			</li>
+			<li class="split">
+				<div class="grid" data-shape="crater" role="img" aria-label="Crater: clears a five by five hole."></div>
+				<h2>Crater</h2>
+				<p>Concentration</p>
+			</li>
+		</ul>
+
+		<p class="splits-note">
+			<strong>They are deliberately not a power ladder.</strong> On a nine-wide board they land
+			within a handful of cells of each other. They differ in shape, not size — so the pick is a
+			real one, and it belongs to the level in front of you rather than to a best answer you
+			memorise once.
+		</p>
+
+		<section class="section">
+			<h2>Three hundred levels, each one measured</h2>
+			<p>
+				Every level is played thousands of times by a bot before it ships, and its move budget
+				is set from what that measures rather than from a guess. A level that turns out to be
+				unfair is a level that can be found and fixed — level 187 is the same board for every
+				player on every device.
+			</p>
+			<ul class="facts">
+				<li>
+					<span class="fact-key">Levels</span>
+					<span class="fact-val">300</span>
+				</li>
+				<li>
+					<span class="fact-key">Sign-in</span>
+					<span class="fact-val">None</span>
+				</li>
+				<li>
+					<span class="fact-key">Network</span>
+					<span class="fact-val">Plays offline</span>
+				</li>
+				<li>
+					<span class="fact-key">Data collected</span>
+					<span class="fact-val">Nothing</span>
+				</li>
+			</ul>
+		</section>
+
+		<section class="section">
+			<h2>Built to be read on a small screen</h2>
+			<p>
+				Colourblind marks, a reduce-motion setting that shortcuts every flourish, and separate
+				toggles for sound, music and haptics. The board sizes itself to your device rather than
+				sitting in a letterboxed rectangle in the middle of it.
+			</p>
+			<p class="muted">
+				Something wrong, or an idea? <a href="support.html">Get in touch</a> — it goes straight
+				to the person who makes it.
+			</p>
+		</section>
+	</main>
+
+	<footer class="foot">
+		<span>Starsplit</span>
+		<span>
+			<a href="support.html">Support</a> ·
+			<a href="privacy.html">Privacy</a>
+		</span>
+	</footer>
+
+</div>
+
+<script>
+// The four footprints, on the nine-wide grid the game actually uses. Kept as data rather
+// than as 324 hand-written divs, and built from the same definitions the game splits by:
+// cross = a row and a column, rows/cols = three lanes, crater = a 5x5 hole.
+const N = 9, MID = 4;
+const SHAPE = {
+	cross:  (x, y) => x === MID || y === MID,
+	rows:   (x, y) => Math.abs(y - MID) <= 1,
+	cols:   (x, y) => Math.abs(x - MID) <= 1,
+	crater: (x, y) => Math.abs(x - MID) <= 2 && Math.abs(y - MID) <= 2,
+};
+
+for (const grid of document.querySelectorAll(".grid")) {
+	const hit = SHAPE[grid.dataset.shape];
+	const frag = document.createDocumentFragment();
+	for (let y = 0; y < N; y++) {
+		for (let x = 0; x < N; x++) {
+			const cell = document.createElement("div");
+			cell.className = "cell";
+			if (hit(x, y)) {
+				cell.classList.add("lit");
+				// Staggered from the centre out, so the shape reads as arriving.
+				const d = Math.max(Math.abs(x - MID), Math.abs(y - MID));
+				cell.style.setProperty("--d", (d * 0.035).toFixed(3) + "s");
+			}
+			frag.appendChild(cell);
+		}
+	}
+	grid.appendChild(frag);
+}
+</script>
+
+</body>
+</html>
