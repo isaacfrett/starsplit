@@ -11,30 +11,21 @@ served by GitHub Pages:
 
 No build step, no dependencies. Edit the HTML and push; Pages serves it.
 
-## Status: not live yet — GitHub Pages is deliberately OFF
+## Status: live
 
-The repo is public so that Pages *can* serve it, but Pages has not been switched on, because
-the contact address is still a placeholder and a privacy policy published with a placeholder
-contact is worse than no page at all.
-
-**Step 1 — replace `[SUPPORT-EMAIL]`.** It is the only placeholder in the repo, and it appears
-three times (once in `privacy.html`, twice in `support.html`):
-
-```bash
-grep -rn "\[SUPPORT-EMAIL\]" .
-```
-
-**Step 2 — turn Pages on.** Settings → Pages → Source: deploy from branch, `main`, `/` (root).
-The pages then land at:
+Pages is on, serving from `main` at the repository root, and the contact address is real.
 
 ```
-https://isaacfrett.github.io/starsplit/            → App Store "Marketing URL" (optional)
+https://isaacfrett.github.io/starsplit/             → App Store "Marketing URL" (optional)
 https://isaacfrett.github.io/starsplit/privacy.html → App Store "Privacy Policy URL" (required)
 https://isaacfrett.github.io/starsplit/support.html → App Store "Support URL" (required)
 ```
 
-Do them in that order. Pages is served from a CDN and gets indexed, so a placeholder that goes
-up is a placeholder that stays in caches after it is fixed.
+**Apple checks that these resolve**, and a Support URL that 404s is a rejection rather than a
+note. Load all three after any change to this repo, not just the one that was edited.
+
+Pages is served from a CDN and gets indexed, so anything published here outlives being fixed —
+which is why the contact address was put in before Pages went on rather than after.
 
 ## Keeping the privacy policy true
 
