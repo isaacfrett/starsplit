@@ -25,7 +25,7 @@
 
 	<main>
 		<section class="hero">
-			<p class="eyebrow">Privacy policy · Last updated 22 July 2026</p>
+			<p class="eyebrow">Privacy policy · Last updated 4 August 2026</p>
 			<h1>Starsplit doesn't track you.</h1>
 			<p class="lede">
 				The game itself collects nothing — no account, no analytics, no crash reporting, and
@@ -37,14 +37,20 @@
 		<section class="section">
 			<h2>What changed, and when</h2>
 			<p>
-				The previous version of this page said Starsplit collected nothing at all and promised
-				that if a future release ever added in-app purchases or advertising, this page would be
-				updated to say exactly what, before that version shipped. This is that update.
+				The first version of this page said Starsplit collected nothing at all, and promised
+				that if a release ever added in-app purchases or advertising, this page would say
+				exactly what before that version shipped. This is that update.
 			</p>
 			<p>
-				Two things are new: <strong>stardust can now be bought</strong>, and <strong>a rewarded
-				video ad can be watched to earn a life back</strong>. Everything below describes what
-				each of those does and does not involve.
+				<strong>Version 1.0 shipped with neither.</strong> Both were written and both were
+				switched off, so the app on the App Store until now has had no ad code running in it
+				and no live store. <strong>Version 1.1 turns both on.</strong>
+			</p>
+			<p>
+				So two things are new: <strong>stardust can be bought</strong>, and <strong>a video ad
+				can be watched for a reward</strong> — five more moves when you have run out, or a life
+				back when the bank is empty. Everything below describes what each of those does and
+				does not involve.
 			</p>
 		</section>
 
@@ -70,10 +76,17 @@
 				always another way to get the same thing without watching.
 			</p>
 			<p>
-				Ads are served by <strong>Google AdMob</strong>. To fill an ad, Google receives your
-				device's advertising identifier along with basic device and ad-performance information.
-				That happens only when an ad is actually requested; if you never tap to watch one,
+				Ads are served by <strong>Google AdMob</strong>. To fill one, Google receives basic
+				device and network information, and the ad-performance data needed to count and measure
+				it. That happens only when an ad is actually requested; if you never tap to watch one,
 				nothing is ever sent.
+			</p>
+			<p>
+				<strong>Your iOS advertising identifier is not part of that.</strong> An app can only
+				read the IDFA after asking you for tracking permission, and Starsplit never asks — the
+				"Allow this app to track you?" prompt is not in the game, and the app is built with
+				tracking switched off entirely. So that identifier is not available to Starsplit, and
+				not available to Google through it.
 			</p>
 			<p>
 				<strong>Every request is non-personalised.</strong> Starsplit asks Google for
@@ -89,7 +102,9 @@
 				and Security page</a> and its
 				<a href="https://policies.google.com/technologies/partner-sites">partner-sites policy</a>.
 				If you are in the EEA, the UK or Switzerland, you will be shown a consent form the first
-				time the app has an ad to offer, and you can change your answer at any time.
+				time the app has an ad to offer. You can reopen that form, and change or withdraw your
+				answer, whenever you like — it is in the game's <strong>Settings</strong>, under
+				<strong>Ad privacy choices</strong>.
 			</p>
 		</section>
 
@@ -119,7 +134,8 @@
 					<tr><th scope="row">Location</th><td>Not collected</td></tr>
 					<tr><th scope="row">Payment details</th><td>Not collected — Apple handles it</td></tr>
 					<tr><th scope="row">Your saved progress</th><td>Stays on your device</td></tr>
-					<tr><th scope="row">Advertising identifier</th><td>Sent to Google only when you choose to watch an ad</td></tr>
+					<tr><th scope="row">Advertising identifier (IDFA)</th><td>Not available — the app never asks for tracking permission</td></tr>
+					<tr><th scope="row">Device and ad-performance data</th><td>Sent to Google only when you choose to watch an ad</td></tr>
 					<tr><th scope="row">Usage or gameplay analytics</th><td>Not collected by us</td></tr>
 					<tr><th scope="row">Diagnostics and crash reports</th><td>Not collected by us</td></tr>
 					<tr><th scope="row">Anything used to track you across apps</th><td>None</td></tr>
