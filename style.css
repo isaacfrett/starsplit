@@ -362,6 +362,7 @@ a:focus-visible,
    guidelines: scaled proportionally only, and given the required clear space of
    at least one quarter of the badge height on every side. */
 .badge { display: inline-block; line-height: 0; }
-.badge img { height: 40px; width: auto; display: block; }
-.badge:focus-visible { outline: 3px solid var(--gold); outline-offset: 6px; border-radius: 6px; }
-.store { margin: 1.75rem 0 0; }
+.badge img { height: 80px; width: auto; max-width: 100%; display: block; }
+@media (max-width: 380px) { .badge img { height: 64px; } }
+.badge:focus-visible { outline: 3px solid var(--gold); outline-offset: 20px; border-radius: 6px; }
+.store { margin: 2rem 0 1.5rem; }
