@@ -358,23 +358,10 @@ a:focus-visible,
 .foot a { color: var(--muted); text-decoration: none; }
 .foot a:hover { color: var(--text); }
 
-/* App Store link — the page's one conversion point, so it carries the gold
-   accent nothing else on the page uses as a fill. */
+/* Apple's official App Store badge, used unmodified per Apple's marketing
+   guidelines: scaled proportionally only, and given the required clear space of
+   at least one quarter of the badge height on every side. */
+.badge { display: inline-block; line-height: 0; }
+.badge img { height: 40px; width: auto; display: block; }
+.badge:focus-visible { outline: 3px solid var(--gold); outline-offset: 6px; border-radius: 6px; }
 .store { margin: 1.75rem 0 0; }
-.store-link {
-	display: inline-block;
-	padding: 0.8rem 1.6rem;
-	border-radius: 999px;
-	background: var(--gold);
-	color: var(--space);
-	font-family: var(--mono);
-	font-size: 0.82rem;
-	font-weight: 700;
-	letter-spacing: 0.1em;
-	text-transform: uppercase;
-	text-decoration: none;
-	transition: transform 0.15s ease, filter 0.15s ease;
-}
-.store-link:hover { transform: translateY(-2px); filter: brightness(1.08); }
-.store-link:focus-visible { outline: 3px solid var(--text); outline-offset: 3px; }
-@media (prefers-reduced-motion: reduce) { .store-link { transition: none; } }
